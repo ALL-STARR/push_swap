@@ -1,18 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_puthexl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/26 01:35:03 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/27 12:20:48 by thomvan-         ###   ########.fr       */
+/*   Created: 2023/12/04 17:21:46 by thomvan-          #+#    #+#             */
+/*   Updated: 2023/12/14 16:05:54 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_s.h"
+#include "ft_printf.h"
 
-int is_empty(t_stack *st)
+static int	ft_hex_counter(unsigned long n)
 {
-    return st->count == 0;
+	int	i;
+
+	i = 0;
+	while (n >= 16)
+	{
+		n /= 16;
+		i++;
+	}
+	i++;
+	return (i);
+}
+
+static void	ft_puth(unsigned long nbr, const char *base)
+{
+	if (nbr >= 16)
+		ft_puth(nbr / 16, base);
+	ft_putchar(base[nbr % 16]);
+}
+
+int	ft_puthexl(unsigned long nbr, const char *base)
+{
+	ft_puth(nbr, base);
+	return (ft_hex_counter(nbr));
 }

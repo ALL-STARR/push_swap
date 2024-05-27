@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:22:52 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/13 18:22:52 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/27 13:58:16 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	main(int argc, char **argv)
 
 	if (argc < 3 || !is_num(argv) || is_repeating(argv, argc - 1))
 	{
-		//print error message
+		ft_printf("wrong input! Please retry with numbers");
 		return (0);
 	}
-	a = stack_init(argc - 1);
-	b = stack_init(argc - 1);
+	a = stack_init(argc - 1, 'a');
+	b = stack_init(argc - 1, 'b');
 	Astack_filler(a, argv);
-	//push_swap(t_stack *a, t_stack *b)
+	push_swap(t_stack *a, t_stack *b)
 	free(a->stack);
 	free(b->stack);
 }

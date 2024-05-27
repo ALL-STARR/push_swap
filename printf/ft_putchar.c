@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/26 01:35:03 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/27 12:20:48 by thomvan-         ###   ########.fr       */
+/*   Created: 2023/11/03 16:24:06 by thomvan-          #+#    #+#             */
+/*   Updated: 2023/12/04 17:25:15 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_s.h"
+#include "ft_printf.h"
 
-int is_empty(t_stack *st)
+int	ft_putchar(char c)
 {
-    return st->count == 0;
+	write(1, &c, 1);
+	return (1);
 }

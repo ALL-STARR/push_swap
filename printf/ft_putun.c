@@ -1,18 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_putun.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/26 01:35:03 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/27 12:20:48 by thomvan-         ###   ########.fr       */
+/*   Created: 2023/11/20 17:45:44 by thomvan-          #+#    #+#             */
+/*   Updated: 2023/12/04 17:25:36 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_s.h"
+#include "ft_printf.h"
 
-int is_empty(t_stack *st)
+static int	ft_ucounter(unsigned int n)
 {
-    return st->count == 0;
+	int	i;
+
+	i = 0;
+	while (n > 9)
+	{
+		n /= 10;
+		i++;
+	}
+	i++;
+	return (i);
+}
+
+static int	ft_uput(unsigned int n)
+{
+	if (n > 9)
+		ft_putnbr((n / 10));
+	ft_putchar(n % 10 + '0');
+	return (ft_ucounter(n));
+}
+
+int	ft_putun(unsigned int n)
+{
+	ft_uput(n);
+	return (ft_ucounter(n));
 }

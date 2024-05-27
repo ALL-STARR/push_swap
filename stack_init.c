@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 13:51:40 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/11 13:51:40 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/27 13:59:01 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ int	is_num(char **argm)
 	return (1);
 }
 
-t_stack *stack_init(int count)
+t_stack *stack_init(int count, char nam)
 {
 	t_stack	*s;
 
-	s = (t_stack *)malloc(sizeof(t_stack));
 	s->size = count;
 	s->stack = malloc(sizeof(int) * (count + 1));
 	s->top = 0;
 	s->bot = 0;
 	s->counter = 0;
+	s->name = nam;
 	return (s);
 }
 
