@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:30:58 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/27 13:21:36 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:18:27 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ typedef struct s_stack
 	int 	count;
 	char	name;
 }	t_stack;
+
+typedef struct s_moves
+{
+	int		a_n_moves;
+	int		b_n_moves;
+	int		index;
+}	t_moves;
 
 int 	is_repeating(char **argm, int count);
 int		is_num(char **argm);

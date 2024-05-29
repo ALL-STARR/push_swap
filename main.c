@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:22:52 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/27 13:58:16 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:03:00 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	}
 	a = stack_init(argc - 1, 'a');
 	b = stack_init(argc - 1, 'b');
-	Astack_filler(a, argv);
+	Astack_filler(a, argv, argc - 1);
 	push_swap(t_stack *a, t_stack *b)
 	free(a->stack);
 	free(b->stack);
