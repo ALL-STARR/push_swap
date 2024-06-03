@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:10:31 by thomvan-          #+#    #+#             */
-/*   Updated: 2024/05/29 18:27:02 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:52:48 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,24 @@
 
 void	pusher(t_stack a, t_stack b)
 {
-	int	bmax;
 	int	bmaxadd;
-	int	bmin;
 	int	i;
 	
-	bmax = b->stack[b->top];
-	bmin = bmax;
-	while (a->count > 3)
+	b->max = b->stack[b->top];
+	b->min = b->max;
+	i = 0;
+	while ((i - 1) < b->size)
 	{
-		i = 0;
-		while ((i - 1) < b->size)
+		i++;
+		if (b->stack[i] > b->max)
 		{
-			i++;
-			if (b->stack[i] > bmax)
-			{
-				bmaxadd = i;
-				bmax = b->stack[i];
-			}
-			if (b->stack[i] < bmin)
-				bmin = b->stack[i];	
+			bmaxadd = i;
+			b->max = b->stack[i];
 		}
+		if (b->stack[i] < b->min)
+			b->min = b->stack[i];	
 	}
+	min_max(a);
 }
 
 int	r_until_top(int addrs, t_stack stak)
@@ -59,23 +55,28 @@ int	r_until_top(int addrs, t_stack stak)
 		return (-j);
 }
 
-t_moves	comparator(t_stack a, t_stack b, int bmaxaddress, int bmax, int bmin)
+t_moves	comparator(t_stack a, t_stack b, int bmaxaddress)
 {
 	t_moves	n_moves;
-	int		min_moves;
+	int		a_min_moves;
+	int		b_min_moves;
 	int		i;
 
 	i = 0;
-	min_moves = a->size;
+	a_min_moves = a->size;
+	b_min_moves = b->size;
 	n_moves->b_n_moves = r_until_top(bmaxaddress, b);
 	while (i <= a->size)
 	{
-		if(a->stack[i] < bmin || a->stack[i] > bmax)
+		if (a->stack[i] < b->min || a->stack[i] > b->max)
 		{
-			if (min_moves > absolute(r_until_top(i, a)))
-				min_moves = r_until_top(i, a);
+			if (a_min_moves > absolute(r_until_top(i, a)))
+				a_min_moves = r_until_top(i, a);
 		}
-		else if (min_moves > absolute())
+		else
+		{
+			
+		}
 		i++;
 	}
 	
@@ -89,30 +90,27 @@ int	absolute(int num)
 		return (num);
 }
 
-int	find_closest(t_stack a, t_stack b, int a_add)
+int	find_closestup(t_stack a, t_stack b, int a_add)
 {
 	int closest;
 	int	clo_add;
+	int	how_far;
 	int	i;
 	
+	closest = b->stack[0];
+	how_far = b->size;
 	i = 0;
-	while (closest < a->stack[a_add])
+	while (i <= b->size)
 	{
-		closest = b->stack[i];
-		i++;
-	}
-	i = 0;
-	while (i <= a->size)
-	{
-		i++;
-		if (b->stack[i] > a->stack[a_add])
+		if (how_far > absolute((a->stack[a_add] - b->stack[i])))
 		{
-			if (b->stack[i] < closest)
+			if (a->stack[a_add] < b->stack[i])
 			{
+				how_far = absolute((a->stack[a_add] - b->stack[i]));
 				clo_add = i;
-				closest = b->stack[i];
 			}
 		}
+		i++;
 	}
-	return (i);
+	return (clo_add);
 }
