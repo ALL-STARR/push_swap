@@ -6,24 +6,23 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:10:31 by thomvan-          #+#    #+#             */
-/*   Updated: 2024/06/06 16:19:28 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:27:01 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_s.h"
 
-void	pusher(t_stack a, t_stack b)
+void	pusher(t_stack *a, t_stack *b)
 {
-	int	bmaxadd;
+	int	cheap_add;
 	int	i;
 
 	i = 0;
-	min_max(b);
-	min_max(a);
-	comparator(a, b, b->max_add);
+	cheap_add = find_cheapest(a, b);
+	
 }
 
-int	r_until_top(int addrs, t_stack stak)
+int	r_until_top(int addrs, t_stack *stak)
 {
 	int	size;
 	int	rotates;
@@ -44,7 +43,7 @@ int	r_until_top(int addrs, t_stack stak)
 		return (-j);
 }
 
-int	find_cheapest(t_stack a, t_stack b, int bmaxaddress)
+int	find_cheapest(t_stack *a, t_stack *b)
 {
 	int		a_min_moves;
 	int		b_min_moves;
@@ -71,7 +70,7 @@ int	find_cheapest(t_stack a, t_stack b, int bmaxaddress)
 	return (cheapest_add);
 }
 
-int	find_closest_val_up(t_stack a, t_stack b, int a_add)
+int	find_closest_val_up(t_stack *a, t_stack *b, int a_add)
 {
 	int	closest;
 	int	clo_add;

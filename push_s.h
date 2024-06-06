@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:30:58 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/06 14:28:43 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:22:44 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ int		r_rotate(t_stack *st);
 void	easy_sort(t_stack *s);
 int		d_rotate(t_stack *st1, t_stack *st2);
 int		d_r_rotate(t_stack *st1, t_stack *st2);
-void	min_max(t_stack st);
-int		find_closest_val_up(t_stack a, t_stack b, int a_add);
+void	min_max(t_stack *st);
+int		find_closest_val_up(t_stack *a, t_stack *b, int a_add);
 int		absolute(int num);
-int		r_until_top(int addrs, t_stack stak);
+int		r_until_top(int addrs, t_stack *stak);
+int		find_cheapest(t_stack *a, t_stack *b);
 
 #endif

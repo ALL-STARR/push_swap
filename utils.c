@@ -6,13 +6,13 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:04:58 by thomvan-          #+#    #+#             */
-/*   Updated: 2024/06/06 14:29:08 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:22:52 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_s.h"
 
-void	min_max(t_stack st)
+void	min_max(t_stack *st)
 {
 	int	i;
 	int	min;
