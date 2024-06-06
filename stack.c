@@ -6,13 +6,13 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 01:35:03 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/27 12:20:48 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/06 15:59:20 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_s.h"
 
-int is_empty(t_stack *st)
+int	is_empty(t_stack *st)
 {
-    return st->count == 0;
+	return (st->count == 0);
 }

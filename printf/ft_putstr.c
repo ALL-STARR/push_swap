@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 16:28:07 by thomvan-          #+#    #+#             */
-/*   Updated: 2023/12/04 17:25:33 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:20:09 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_putstr(char *s)
 	i = 0;
 	if (!s)
 	{
-		ft_putstr("(null)"); 
+		ft_putstr("(null)");
 		return (6);
 	}
 	while (s[i])

@@ -6,17 +6,17 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 13:51:40 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/27 13:59:01 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:28:58 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_s.h"
 
-int is_repeating(char **argm, int count)
+int	is_repeating(char **argm, int count)
 {
 	int	i;
-	int j;
+	int	j;
 	int	*checker;
 
 	checker = malloc(sizeof(int) * (count + 1));
@@ -58,7 +58,7 @@ int	is_num(char **argm)
 	return (1);
 }
 
-t_stack *stack_init(int count, char nam)
+t_stack	*stack_init(int count, char nam)
 {
 	t_stack	*s;
 
@@ -71,7 +71,7 @@ t_stack *stack_init(int count, char nam)
 	return (s);
 }
 
-void Astack_filler(t_stack *A, char **argm, int cntr)
+void	astack_filler(t_stack *A, char **argm, int cntr)
 {
 	int	i;
 
@@ -83,5 +83,5 @@ void Astack_filler(t_stack *A, char **argm, int cntr)
 	}
 	A->stack[i] = '\0';
 	A->count = cntr;
-	return;
+	return ;
 }

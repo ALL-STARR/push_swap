@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:04:58 by thomvan-          #+#    #+#             */
-/*   Updated: 2024/06/03 16:23:23 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:29:08 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,12 @@ void	min_max(t_stack st)
 	}
 	st->max = max;
 	st->min = min;
+}
+
+int	absolute(int num)
+{
+	if (num < 0)
+		return (-num);
+	else
+		return (num);
 }
