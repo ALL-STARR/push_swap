@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:30:58 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/06 16:22:44 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/14 21:00:56 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ typedef struct s_stack
 
 typedef struct s_moves
 {
-	int		a_n_moves;
-	int		b_n_moves;
-	int		index;
+	int		aadd;
+	int		badd;
 }	t_moves;
 
 int		is_repeating(char **argm, int count);
@@ -54,5 +53,9 @@ int		find_closest_val_up(t_stack *a, t_stack *b, int a_add);
 int		absolute(int num);
 int		r_until_top(int addrs, t_stack *stak);
 int		find_cheapest(t_stack *a, t_stack *b);
+void	r_rotations(int *rota, int *rotb, t_stack *a, t_stack *b);
+void	f_rotations(int *rota, int *rotb, t_stack *a, t_stack *b);
+void	first_push(t_stack *a, t_stack *b);
+void	rotator(int rot_a, int rot_b, t_stack *a, t_stack *b);
 
 #endif

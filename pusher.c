@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:10:31 by thomvan-          #+#    #+#             */
-/*   Updated: 2024/06/06 16:27:01 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/14 21:05:42 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 void	pusher(t_stack *a, t_stack *b)
 {
-	int	cheap_add;
-	int	i;
+	t_moves	cheap_add;
+	int		i;
 
 	i = 0;
 	cheap_add = find_cheapest(a, b);
+	first_push(a, b);
+	min_max(b);
+	easy_sort(a);
+	//mettre un la meme que first_push mais implementer en sens inverse avec une variable pour la n fois
 	
 }
 
@@ -43,13 +47,12 @@ int	r_until_top(int addrs, t_stack *stak)
 		return (-j);
 }
 
-int	find_cheapest(t_stack *a, t_stack *b)
+t_moves	find_cheapest(t_stack *a, t_stack *b)
 {
-	int		a_min_moves;
-	int		b_min_moves;
-	int		bup_add;
-	int		cheapest_add;
-	int		i;
+	int			a_min_moves;
+	int			b_min_moves;
+	t_moves		targets;
+	int			i;
 
 	i = 0;
 	a_min_moves = a->size;
@@ -64,10 +67,13 @@ int	find_cheapest(t_stack *a, t_stack *b)
 				b_min_moves = r_until_top(find_closest_val_up(a, b, i), b);
 		}
 		if ((b_min_moves * a_min_moves) > 0)
-			cheapest_add = i;
+		{
+			targets.aadd = i;
+			targets.badd = find_closest_val_up(a, b, i);
+		}
 		i++;
 	}
-	return (cheapest_add);
+	return (targets);
 }
 
 int	find_closest_val_up(t_stack *a, t_stack *b, int a_add)
