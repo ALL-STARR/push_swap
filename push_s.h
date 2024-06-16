@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:30:58 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/14 21:00:56 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/16 16:00:24 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,12 @@ int		d_r_rotate(t_stack *st1, t_stack *st2);
 void	min_max(t_stack *st);
 int		find_closest_val_up(t_stack *a, t_stack *b, int a_add);
 int		absolute(int num);
-int		r_until_top(int addrs, t_stack *stak);
+int		r_until_bot(int addrs, t_stack *stak);
 int		find_cheapest(t_stack *a, t_stack *b);
 void	r_rotations(int *rota, int *rotb, t_stack *a, t_stack *b);
 void	f_rotations(int *rota, int *rotb, t_stack *a, t_stack *b);
-void	first_push(t_stack *a, t_stack *b);
+void	big_push(t_stack *a, t_stack *b);
 void	rotator(int rot_a, int rot_b, t_stack *a, t_stack *b);
+void	push_swap(t_stack *a, t_stack *b);
 
 #endif

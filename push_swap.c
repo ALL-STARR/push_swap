@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 01:55:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/14 21:02:14 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/16 15:38:32 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-	int	i;
-
-	i = a->size;
 	push(a, b);
 	min_max(a);
 	min_max(b);
-	pusher(a, b);
+	big_push(a, b);
+	min_max(b);
+	easy_sort(a);
+	big_push(b, a);
+	min_max(a);
+	rotator(r_until_top(a->min_add, a), 0, a, b);
+	return ;
+	
 }
 
 void	easy_sort(t_stack *s)

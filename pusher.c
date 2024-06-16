@@ -6,27 +6,13 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:10:31 by thomvan-          #+#    #+#             */
-/*   Updated: 2024/06/14 21:05:42 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/16 15:55:18 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_s.h"
 
-void	pusher(t_stack *a, t_stack *b)
-{
-	t_moves	cheap_add;
-	int		i;
-
-	i = 0;
-	cheap_add = find_cheapest(a, b);
-	first_push(a, b);
-	min_max(b);
-	easy_sort(a);
-	//mettre un la meme que first_push mais implementer en sens inverse avec une variable pour la n fois
-	
-}
-
-int	r_until_top(int addrs, t_stack *stak)
+int	r_until_bot(int addrs, t_stack *stak)
 {
 	int	size;
 	int	rotates;
@@ -37,9 +23,9 @@ int	r_until_top(int addrs, t_stack *stak)
 	rotates = 0;
 	i = 0;
 	j = 0;
-	while (stak->stack[(stak->top + size + i) % size] != stak->stack[addrs])
+	while (stak->stack[(stak->bot + size + i) % size] != stak->stack[addrs])
 		i++;
-	while (stak->stack[(stak->top + size - j) % size] != stak->stack[addrs])
+	while (stak->stack[(stak->bot + size - j) % size] != stak->stack[addrs])
 		j++;
 	if (i >= j)
 		return (i);

@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:04:58 by thomvan-          #+#    #+#             */
-/*   Updated: 2024/06/14 20:21:56 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/16 15:49:10 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	absolute(int num)
 		return (num);
 }
 
-void	first_push(t_stack *a, t_stack *b)
+void	big_push(t_stack *a, t_stack *b)
 {
 	int	i;
 	int	a_rot;
@@ -31,7 +31,7 @@ void	first_push(t_stack *a, t_stack *b)
 	while (i <= (a->size - 3))
 	{
 		cheap = find_cheapest(a, b);
-		a_rot = r_until_top(cheap_add, a);
+		a_rot = r_until_top(cheap.aadd, a);
 		if (cheap.badd != b->max_add)
 			b_rot = r_untiltop(find_closest_val_up(a, b, cheap.aadd), b);
 		else
@@ -68,12 +68,12 @@ void	r_rotations(int *rota, int *rotb, t_stack *a, t_stack *b)
 	}
 	if (rot_a != 0)
 	{
-		rotate(a);
+		r_rotate(a);
 		*rot_a++;
 	}
 	if (rot_b != 0)
 	{
-		rotate(b);
+		r_rotate(b);
 		*rot_b++;
 	}
 	return ;
@@ -83,7 +83,7 @@ void	f_rotations(int *rota, int *rotb, t_stack *a, t_stack *b)
 {
 	while (*rot_a != 0 && *rot_b != 0)
 	{
-		d_r_rotate(a, b);
+		d_rotate(a, b);
 		*rot_a--;
 		*rot_b--;
 	}
