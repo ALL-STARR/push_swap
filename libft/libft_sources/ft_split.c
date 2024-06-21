@@ -6,11 +6,11 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:53:43 by thomvan-          #+#    #+#             */
-/*   Updated: 2023/11/12 17:21:13 by thomvan-         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:30:09 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int	ft_free(char **piec)
 {

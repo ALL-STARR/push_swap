@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:58:45 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/27 13:16:39 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:01:08 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,16 @@ int	swap(t_stack *stk)
 
 int	rotate(t_stack *st)
 {
-	int	buff;
-
-	st->bot = (st->bot + st->size + 1) % st->size;
-	st->top = (st->top + st->size + 1) % st->size;
+	st->bot = (st->bot + st->count + 1) % st->count;
+	st->top = (st->top + st->count + 1) % st->count;
 	ft_printf("r%c\n", st->name);
 	return (1);
 }
 
 int	r_rotate(t_stack *st)
 {
-	int	buff;
-
-	st->bot = (st->bot + st->size - 1) % st->size;
-	st->top = (st->top + st->size - 1) % st->size;
+	st->bot = (st->bot + st->count - 1) % st->count;
+	st->top = (st->top + st->count - 1) % st->count;
 	ft_printf("rr%c\n", st->name);
 	return (1);
 }

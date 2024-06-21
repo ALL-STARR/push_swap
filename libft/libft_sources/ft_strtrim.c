@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:06:10 by thomvan-          #+#    #+#             */
-/*   Updated: 2023/11/08 17:49:56 by thomvan-         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:35:07 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	k = 0;
+	if (!s1 || !set)
+		return (0);
 	j = ft_strlen(s1);
 	while (isin(set, s1[i]) && (s1[i] != '\0'))
 		i++;

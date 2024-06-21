@@ -6,11 +6,10 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 13:51:40 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/14 19:16:59 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:30:33 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_s.h"
 
 int	is_repeating(char **argm, int count)
@@ -22,7 +21,7 @@ int	is_repeating(char **argm, int count)
 	checker = malloc(sizeof(int) * (count + 1));
 	i = 0;
 	j = 0;
-	while (argm[i] != '\0')
+	while (argm[i] != 0)
 	{
 		checker[i] = ft_atoi(argm[i]);
 		while (j < i)
@@ -43,13 +42,13 @@ int	is_num(char **argm)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 1;
 	j = 0;
 	while (argm[i] != 0)
 	{
-		while (argm[i][j] != 0)
+		while (argm[i][j] != '\0')
 		{
-			if (!ft_isdigit(argm[i][j]))
+			if (!ft_isdigit(argm[i][j]) || !(argm[i][j] != '-'))
 				return (0);
 			j++;
 		}
@@ -62,26 +61,33 @@ t_stack	*stack_init(int count, char nam)
 {
 	t_stack	*s;
 
+	s = malloc(sizeof(t_stack));
+	if (!s)
+		return (NULL);
 	s->size = count;
 	s->stack = malloc(sizeof(int) * (count + 1));
+	if (!s->stack)
+		return (NULL);
 	s->top = 0;
 	s->bot = 0;
-	s->counter = 0;
+	s->count = 0;
 	s->name = nam;
 	return (s);
 }
 
-void	astack_filler(t_stack *A, char **argm, int cntr)
+void	astack_filler(t_stack *a, char **argm, int cntr)
 {
 	int	i;
 
-	i = 0;
-	while (argm[i] != '\0')
+	i = 1;
+	while (argm[i] != 0)
 	{
-		A->stack[i] = ft_atoi(argm[i]);
+		a->stack[i - 1] = ft_atoi(argm[i]);
+		a->bot += 1;
 		i++;
 	}
-	A->stack[i] = '\0';
-	A->count = cntr;
+	a->bot -= 1;
+	a->stack[i - 1] = '\0';
+	a->count = cntr;
 	return ;
 }

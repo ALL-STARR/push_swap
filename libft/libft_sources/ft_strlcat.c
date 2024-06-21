@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 10:35:48 by thomvan-          #+#    #+#             */
-/*   Updated: 2023/11/14 02:18:05 by marvin           ###   ########.fr       */
+/*   Updated: 2023/11/16 16:53:59 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ size_t	ft_strlcat(char *dest, char *src, size_t size)
 
 	j = 0;
 	k = 0;
+	if (!dest && size == 0)
+		return (0);
 	ogsize = o_size(dest);
 	while (src[k])
 		k++;

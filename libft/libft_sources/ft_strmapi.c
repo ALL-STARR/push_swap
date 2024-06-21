@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 00:57:10 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/14 00:57:10 by marvin           ###   ########.fr       */
+/*   Created: 2023/11/03 16:04:04 by thomvan-          #+#    #+#             */
+/*   Updated: 2023/11/16 16:47:04 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_list	*l;
+	long	i;
+	char	*str;
 
-	if (!del || !lst)
-		return ;
-	while (lst && (*lst))
+	i = 0;
+	if (!s || !f)
+		return (0);
+	str = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!str)
+		return (0);
+	while (s[i])
 	{
-		l = (*lst)->next;
-		ft_lstdelone((*lst), del);
-		(*lst) = l;
+		str[i] = f(i, s[i]);
+		i++;
 	}
+	str[i] = '\0';
+	return (str);
 }
