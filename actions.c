@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:58:45 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/21 18:01:08 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:18:46 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	push(t_stack *src, t_stack *dst)
 {
 	if (is_empty(src))
 		return (0);
+	dst->stack[dst->bot] = src->stack[src->bot];
 	dst->bot++;
 	dst->count++;
-	dst->stack[dst->bot] = src->stack[src->bot];
 	src->stack[src->bot] = 0;
 	src->bot--;
 	src->count--;
