@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:04:58 by thomvan-          #+#    #+#             */
-/*   Updated: 2024/06/21 16:18:49 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/22 13:17:48 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ void	big_push(t_stack *a, t_stack *b)
 	t_moves	cheap;
 
 	i = 0;
-	while (i <= (a->size - 3))
+	while (i <= (a->count - 3) && a->count > 3)
 	{
 		cheap = find_cheapest(a, b);
+		ft_printf("cheap.add is %d\n", cheap.aadd);
 		a_rot = r_until_bot(cheap.aadd, a);
+		ft_printf("a_rot is %d\n", a_rot);
 		if (cheap.badd != b->max_add)
 			b_rot = r_until_bot(find_closest_val_up(a, b, cheap.aadd), b);
 		else
@@ -40,6 +42,9 @@ void	big_push(t_stack *a, t_stack *b)
 		push(a, b);
 		i++;
 	}
+	if (a->count == 1)
+		push(a ,b);
+	return ;
 }
 
 void	rotator(int rot_a, int rot_b, t_stack *a, t_stack *b)

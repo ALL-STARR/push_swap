@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 01:55:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/21 16:18:35 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/22 13:49:54 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	push_swap(t_stack *a, t_stack *b)
 	easy_sort(a);
 	big_push(b, a);
 	min_max(a);
-	rotator(r_until_bot(a->min_add, a), 0, a, b);
+	rotator(r_until_bot(a->min_add, a), zero, a, b);
 	return ;
 }
 
@@ -30,15 +30,15 @@ void	easy_sort(t_stack *s)
 {
 	if (s->stack[s->top] > s->stack[s->top + 1]
 		&& s->stack[s->top + 1] > s->stack[s->bot])
+		r_rotate(s);
+	else if (s->stack[s->top] > s->stack[s->top + 1]
+		&& s->stack[s->top + 1] < s->stack[s->bot]
+		&& s->stack[s->bot] < s->stack[s->top])
 	{
 		rotate(s);
 		rotate(s);
 		return ;
 	}
-	else if (s->stack[s->top] > s->stack[s->top + 1]
-		&& s->stack[s->top + 1] < s->stack[s->bot]
-		&& s->stack[s->bot] < s->stack[s->top])
-		r_rotate(s);
 	else if (s->stack[s->top] > s->stack[s->top + 1]
 		&& s->stack[s->top + 1] < s->stack[s->bot]
 		&& s->stack[s->bot] > s->stack[s->top])

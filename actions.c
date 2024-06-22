@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:58:45 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/21 18:18:46 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/22 13:34:37 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	push(t_stack *src, t_stack *dst)
 {
 	if (is_empty(src))
 		return (0);
-	dst->stack[dst->bot] = src->stack[src->bot];
+	dst->stack[dst->bot] = src->stack[src->bot - 1];
 	dst->bot++;
 	dst->count++;
-	src->stack[src->bot] = 0;
+	src->stack[src->bot - 1] = 0;
 	src->bot--;
 	src->count--;
 	ft_printf("p%c\n", dst->name);
@@ -32,9 +32,6 @@ int	swap(t_stack *stk)
 
 	if (is_empty(stk))
 		return (0);
-	buf = stk->stack[stk->bot];
-	stk->stack[stk->bot] = stk->stack[stk->bot - 1];
-	stk->stack[stk->bot - 1] = buf;
 	ft_printf("s%c\n", stk->name);
 	return (1);
 }

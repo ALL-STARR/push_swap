@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 13:51:40 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/21 17:30:33 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/22 13:24:53 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	astack_filler(t_stack *a, char **argm, int cntr)
 		a->bot += 1;
 		i++;
 	}
-	a->bot -= 1;
 	a->stack[i - 1] = '\0';
 	a->count = cntr;
 	return ;
