@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:58:45 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/22 13:34:37 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/26 19:54:28 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int	push(t_stack *src, t_stack *dst)
 {
-	if (is_empty(src))
-		return (0);
-	dst->stack[dst->bot] = src->stack[src->bot - 1];
-	dst->bot++;
+	int	dest;
+	
+	dest = next_up(dst, dst->top);
+	dst->stack[next_up(dst, dst->top)] = src->stack[src->top];
+	dst->top = dest;
 	dst->count++;
-	src->stack[src->bot - 1] = 0;
-	src->bot--;
+	src->stack[src->top] = 0;
 	src->count--;
+	src->top = next_down(src, src->top);
 	ft_printf("p%c\n", dst->name);
 	return (1);
 }
@@ -30,24 +31,45 @@ int	swap(t_stack *stk)
 {
 	int	buf;
 
-	if (is_empty(stk))
-		return (0);
+	buf = stk->stack[stk->top];
+	stk->stack[stk->top] = stk->stack[next_down(stk, stk->top)];
+	stk->stack[next_down(stk, stk->top)] = buf;
 	ft_printf("s%c\n", stk->name);
 	return (1);
 }
 
-int	rotate(t_stack *st)
+void	r_rotate(t_stack *stk, int print)
 {
-	st->bot = (st->bot + st->count + 1) % st->count;
-	st->top = (st->top + st->count + 1) % st->count;
-	ft_printf("r%c\n", st->name);
-	return (1);
+	if (stk->count == stk->size)
+	{
+		stk->bot = stk->top;
+		stk->top = next_down(stk, stk->top);
+	}
+	else
+	{
+		stk->bot = next_down(stk, stk->bot);
+		stk->stack[stk->bot] = stk->stack[stk->top];
+		stk->stack[stk->top] = 0;
+		stk->top = next_down(stk, stk->top);
+	}
+	if (print)
+		ft_printf("rr%c\n", stk->name);
 }
 
-int	r_rotate(t_stack *st)
+void	rotate(t_stack *stk, int print)
 {
-	st->bot = (st->bot + st->count - 1) % st->count;
-	st->top = (st->top + st->count - 1) % st->count;
-	ft_printf("rr%c\n", st->name);
-	return (1);
+	if (stk->count == stk->size)
+	{
+		stk->top = stk->bot;
+		stk->bot = next_up(stk, stk->bot);
+	}
+	else
+	{
+		stk->top = next_up(stk, stk->top);
+		stk->stack[stk->top] = stk->stack[stk->bot];
+		stk->stack[stk->bot] = 0;
+		stk->bot = next_up(stk, stk->bot);
+	}
+	if (print)
+		ft_printf("r%c\n", stk->name);
 }

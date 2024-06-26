@@ -10,11 +10,10 @@ HEADER	= push_s.h \
 PUSH_SWAP_SRCS	=	actions.c\
 				doubles.c\
 				main.c\
-				pusher.c\
 				stack_init.c\
-				stack.c\
 				utils.c\
-				push_swap.c
+				push_swap.c\
+				pusher.c\
 
 
 
@@ -31,7 +30,7 @@ FT_FOLDER = ./libft
 
 FT = ${FT_FOLDER}/libft.a
 
-CC		= gcc
+CC		= gcc -fsanitize=address -g
 
 FLAGS	= -Wall -Wextra -Werror
 

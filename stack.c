@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 01:35:03 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/21 16:44:35 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/26 18:23:11 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,18 @@ void	min_max(t_stack *st)
 	int	max;
 
 	i = 0;
-	min = st->stack[0];
+	min = st->stack[st->top];
 	max = min;
-	while (i <= st->size)
+	while (i < st->count)
 	{
-		if (st->stack[i] < min)
+		while(st->stack[i] == 0)
+			i++;
+		if(st->stack[i] < min)
 		{
 			min = st->stack[i];
 			st->min_add = i;
 		}
-		if (st->stack[i] > max)
+		if(st->stack[i] > max)
 		{
 			max = st->stack[i];
 			st->max_add = i;
@@ -42,4 +44,5 @@ void	min_max(t_stack *st)
 	}
 	st->max = max;
 	st->min = min;
+	return ;
 }
