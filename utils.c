@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:04:58 by thomvan-          #+#    #+#             */
-/*   Updated: 2024/06/26 19:24:23 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:57:55 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,23 @@ void	stack_display(t_stack *s)
 	{
 		ft_printf(" %d", s->stack[adrs]);
 		adrs = next_down(s, adrs);
+		count--;
+	}
+	ft_printf("\n");
+}
+
+void	true_display(t_stack *s)
+{
+	int	count;
+	int	i;
+
+	i = 0;
+	count = s->size;
+	ft_printf("true %c : ", s->name);
+	while(count)
+	{
+		ft_printf("%d ", s->stack[i]);
+		i++;
 		count--;
 	}
 	ft_printf("\n");

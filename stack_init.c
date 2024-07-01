@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 13:51:40 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/26 18:10:24 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:31:12 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,13 @@ t_stack	*stack_init(int count, char nam)
 	s->stack = malloc(sizeof(int) * (count + 1));
 	if (!s->stack)
 		return (NULL);
+	while(count)
+	{
+		s->stack[count - 1] = 0;
+		count--;
+	}
 	s->top = 0;
-	s->bot = s->size - 1;
+	s->bot = 0;
 	s->count = 0;
 	s->name = nam;
 	return (s);
@@ -91,6 +96,7 @@ void	astack_filler(t_stack *a, char **argm, int cntr)
 	check[i - 1] = '\0';
 	ranker(check, a, cntr);
 	a->count = cntr;
+	a->bot = a->size - 1;
 	return ;
 }
 

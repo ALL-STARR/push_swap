@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:16:49 by thomvan-          #+#    #+#             */
-/*   Updated: 2024/06/26 19:54:47 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/07/01 16:24:37 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,29 @@ void	rotator(t_stack *stc, int amount)
 		r_rotate(stc,1);
 		amount++;
 	}
+}
+
+void	doubler(t_stack *a, t_stack *b, int am1, int am2)
+{
+	if (am1 * am2)
+	{
+		while (am1 && am2)
+		{
+			if (am1 > 0)
+			{
+				d_rotate(a, b);
+				am1--;
+				am2--;
+			}
+			else if (am1 < 0)
+			{
+				d_r_rotate(a, b);
+				am1++;
+				am2++;
+			}
+		}
+	}
+	rotator(a, am1);
+	rotator(b, am2);
+	return ;
 }

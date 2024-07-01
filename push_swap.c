@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 01:55:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/26 20:36:21 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:36:57 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-	push(a, b);
-	//ft_printf("a->bot is %d and = %d a->top is %d and is = %d\n", a->bot, a->stack[a->bot], a->top, a->stack[a->top]);
-	stack_display(a);
-	rotator(a, r_until_top(2, a));
-	//ft_printf("a->bot is %d and = %d a->top is %d and is = %d\n", a->bot, a->stack[a->bot], a->top, a->stack[a->top]);
-	//stack_display(a);
-	stack_display(a);
-	/*while(a->count > 3)
+	
+	push(a,b);
+	while(a->count > 3)
 	{
-		find_cheapest(a, b);
-		organizer(a,b);
-		push(a, b);
+		
+		pusher(a, b);
 	}
-	easy_sort(a);*/
+	easy_sort(a);
+	/*while(b->count > 0)
+		pusher(b, a);*/
+	true_display(a);
+	true_display(b);
+	stack_display(a);
+	stack_display(b);
 	
 	return ;
 }

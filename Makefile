@@ -14,6 +14,7 @@ PUSH_SWAP_SRCS	=	actions.c\
 				utils.c\
 				push_swap.c\
 				pusher.c\
+				stack.c\
 
 
 

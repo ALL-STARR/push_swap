@@ -6,7 +6,7 @@
 /*   By: thomvan- <thomvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:30:58 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/26 19:13:34 by thomvan-         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:28:58 by thomvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,14 @@ void		push_swap(t_stack *a, t_stack *b);
 int			next_up(t_stack *s, int add);
 int			next_down(t_stack *s, int add);
 void		ranker(int *list, t_stack *a, int size);
-int			r_until_top(int addrs, t_stack *stak);
+int			rtt(int addrs, t_stack *stak);
 void		rotator(t_stack *stc, int amount);
 void		stack_display(t_stack *s);
+int			m_plus(int min_m, int b_adrs, t_stack *b);
+int			clo_val_up(t_stack *a, t_stack *b, int a_add);
+t_moves		find_cheap(t_stack *a, t_stack *b);
+void		true_display(t_stack *s);
+void		doubler(t_stack *a, t_stack *b, int am1, int am2);
+void		pusher(t_stack *a, t_stack *b);
 
 #endif
