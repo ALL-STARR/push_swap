@@ -53,7 +53,7 @@ void	r_rotate(t_stack *stk, int print)
 		stk->top = next_down(stk, stk->top);
 	}
 	if (print)
-		ft_printf("rr%c\n", stk->name);
+		ft_printf("r%c\n", stk->name);
 }
 
 void	rotate(t_stack *stk, int print)
@@ -71,5 +71,5 @@ void	rotate(t_stack *stk, int print)
 		stk->bot = next_up(stk, stk->bot);
 	}
 	if (print)
-		ft_printf("r%c\n", stk->name);
+		ft_printf("rr%c\n", stk->name);
 }

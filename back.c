@@ -48,7 +48,10 @@ t_moves	b_find_cheap(t_stack *a, t_stack *b)
 	count = min;
 	adrs = a->top;
 	moves.aadd = a->top;
-	moves.badd = clo_val_up(a, b, a->top);
+	if (a->stack[adrs] > b->max )
+		moves.badd = b->min_add;
+	else
+		moves.badd = clo_val_up(a, b, a->top);
 	while (count)
 	{
 		if (a->stack[adrs] > b->max || a->stack[adrs] < b->min)
@@ -60,7 +63,7 @@ t_moves	b_find_cheap(t_stack *a, t_stack *b)
 				moves.badd = b->min_add;
 			}
 		}
-		if (min > m_plus(rtt(adrs, a), clo_val_up(a, b, adrs), b))
+		else if (min > m_plus(rtt(adrs, a), clo_val_up(a, b, adrs), b))
 		{
 			min = m_plus(rtt(adrs, a), clo_val_up(a, b, adrs), b);
 			moves.aadd = adrs;

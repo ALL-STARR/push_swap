@@ -66,5 +66,7 @@ void		true_display(t_stack *s);
 void		doubler(t_stack *a, t_stack *b, int am1, int am2);
 void		pusher(t_stack *a, t_stack *b);
 void		b_pusher(t_stack *a, t_stack *b);
+long int	big_atoi(const char *str);
+int			is_too_much(char **arv);
 
 #endif

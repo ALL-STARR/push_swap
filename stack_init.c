@@ -48,7 +48,7 @@ int	is_num(char **argm)
 	{
 		if (argm[i][j] == '-')
 			j++;
-		if (!(ft_isdigit(argm[i][j]) || (argm[i][j] != '-')))
+		if (!(ft_isdigit(argm[i][j])))
 			return (0);
 		j = 0;
 		i++;

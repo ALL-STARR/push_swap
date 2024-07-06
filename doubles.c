@@ -16,7 +16,7 @@ int	d_rotate(t_stack *st1, t_stack *st2)
 {
 	rotate(st1, 0);
 	rotate(st2, 0);
-	ft_printf("rr\n");
+	ft_printf("rrr\n");
 	return (1);
 }
 
@@ -24,7 +24,7 @@ int	d_r_rotate(t_stack *st1, t_stack *st2)
 {
 	r_rotate(st1, 0);
 	r_rotate(st2, 0);
-	ft_printf("rrr\n");
+	ft_printf("rr\n");
 	return (1);
 }
 
