@@ -86,6 +86,8 @@ void	astack_filler(t_stack *a, char **argm, int cntr)
 
 	i = 1;
 	check = malloc(sizeof(int) * (cntr + 1));
+	if (!check)
+		return ;
 	while (argm[i] != 0)
 	{
 		a->stack[i - 1] = ft_atoi(argm[i]);
@@ -117,4 +119,5 @@ void	ranker(int *list, t_stack *a, int size)
 		a->stack[i] = count_smaller;
 		i++;
 	}
+	free(list);
 }

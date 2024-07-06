@@ -15,6 +15,7 @@ PUSH_SWAP_SRCS	=	actions.c\
 				push_swap.c\
 				pusher.c\
 				stack.c\
+				back.c\
 
 
 
@@ -31,7 +32,7 @@ FT_FOLDER = ./libft
 
 FT = ${FT_FOLDER}/libft.a
 
-CC		= gcc -fsanitize=address -g
+CC		= gcc 
 
 FLAGS	= -Wall -Wextra -Werror
 

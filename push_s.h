@@ -58,10 +58,13 @@ int			rtt(int addrs, t_stack *stak);
 void		rotator(t_stack *stc, int amount);
 void		stack_display(t_stack *s);
 int			m_plus(int min_m, int b_adrs, t_stack *b);
+int			clo_val_down(t_stack *a, t_stack *b, int a_add);
 int			clo_val_up(t_stack *a, t_stack *b, int a_add);
-t_moves		find_cheap(t_stack *a, t_stack *b);
+t_moves		f_find_cheap(t_stack *a, t_stack *b);
+t_moves		b_find_cheap(t_stack *a, t_stack *b);
 void		true_display(t_stack *s);
 void		doubler(t_stack *a, t_stack *b, int am1, int am2);
 void		pusher(t_stack *a, t_stack *b);
+void		b_pusher(t_stack *a, t_stack *b);
 
 #endif

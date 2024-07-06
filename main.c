@@ -17,7 +17,9 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
-	if (argc < 3 || !is_num(argv) || is_repeating(argv, argc - 1))
+	if (argc == 1)
+		return (0);
+	if (!is_num(argv) || is_repeating(argv, argc - 1))
 	{
 		ft_printf("Error\n");
 		return (0);
@@ -27,13 +29,13 @@ int	main(int argc, char **argv)
 	if (!a || !b)
 		return (-1);
 	astack_filler(a, argv, argc - 1);
-	stack_display(a);
 	if (argc == 3 && (atoi(argv[1]) > atoi(argv[2])))
 		swap(a);
 	else if (argc == 4)
 		easy_sort(a);
 	if (argc > 4)
 		push_swap(a, b);
+	true_display(a);
 	free(a->stack);
 	free(b->stack);
 	free(a);

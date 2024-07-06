@@ -60,7 +60,7 @@ void	pusher(t_stack *a, t_stack *b)
 	
 	min_max(a);
 	min_max(b);
-	m = find_cheap(a, b);
+	m = f_find_cheap(a, b);
 	doubler(a, b, rtt(m.aadd, a), rtt(m.badd, b));
 	push(a, b);
 	return ;

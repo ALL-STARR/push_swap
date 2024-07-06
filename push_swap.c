@@ -14,20 +14,14 @@
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-	
 	push(a,b);
 	while(a->count > 3)
-	{
-		
 		pusher(a, b);
-	}
 	easy_sort(a);
-	/*while(b->count > 0)
-		pusher(b, a);*/
-	true_display(a);
-	true_display(b);
-	stack_display(a);
-	stack_display(b);
+	while(b->count > 0)
+		b_pusher(b, a);
+	min_max(a);
+	rotator(a, rtt(a->min_add, a));
 	
 	return ;
 }
@@ -63,7 +57,7 @@ void	easy_sort(t_stack *s)
 int	next_up(t_stack *s, int add)
 {
 	if(s->count == 0)
-		return (USER_ADDR_NULL);
+		return (0);
 	if(add == 0)
 		return (s->size - 1);
 	else
