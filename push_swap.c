@@ -29,24 +29,24 @@ void	push_swap(t_stack *a, t_stack *b)
 void	easy_sort(t_stack *s)
 {
 	if (s->stack[s->top] > s->stack[next_down(s, s->top)]
-		&& s->stack[next_down(s, s->top)] > s->stack[next_down(s, s->top + 1)])
+		&& s->stack[next_down(s, s->top)] > s->stack[next_down(s, next_down(s, s->top))])
 	{
 		r_rotate(s, 1);
 		swap(s);
 	}
 	else if (s->stack[s->top] > s->stack[next_down(s, s->top)]
-		&& s->stack[next_down(s, s->top)] < s->stack[next_down(s, s->top + 1)]
-		&& s->stack[next_down(s, s->top + 1)] < s->stack[s->top])
+		&& s->stack[next_down(s, s->top)] < s->stack[next_down(s, next_down(s, s->top))]
+		&& s->stack[next_down(s, next_down(s, s->top))] < s->stack[s->top])
 		r_rotate(s, 1);
 	else if (s->stack[s->top] > s->stack[next_down(s, s->top)]
-		&& s->stack[next_down(s, s->top)] < s->stack[next_down(s, s->top + 1)]
-		&& s->stack[next_down(s, s->top + 1)] > s->stack[s->top])
+		&& s->stack[next_down(s, s->top)] < s->stack[next_down(s, next_down(s, s->top))]
+		&& s->stack[next_down(s, next_down(s, s->top))] > s->stack[s->top])
 		swap(s);
 	else if (s->stack[s->top] < s->stack[next_down(s, s->top)]
-		&& s->stack[s->top] > s->stack[next_down(s, s->top + 1)])
+		&& s->stack[s->top] > s->stack[next_down(s, next_down(s, s->top))])
 		rotate(s, 1);
 	else if (s->stack[s->top] < s->stack[next_down(s, s->top)]
-		&& s->stack[next_down(s, s->top + 1)] < s->stack[next_down(s, s->top)])
+		&& s->stack[next_down(s, next_down(s, s->top))] < s->stack[next_down(s, s->top)])
 	{
 		swap(s);
 		r_rotate(s, 1);

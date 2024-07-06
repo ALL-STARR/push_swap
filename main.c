@@ -35,7 +35,6 @@ int	main(int argc, char **argv)
 		easy_sort(a);
 	if (argc > 4)
 		push_swap(a, b);
-	//stack_display(a);
 	free(a->stack);
 	free(b->stack);
 	free(a);

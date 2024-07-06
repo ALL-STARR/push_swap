@@ -48,7 +48,7 @@ t_moves	b_find_cheap(t_stack *a, t_stack *b)
 	count = min;
 	adrs = a->top;
 	moves.aadd = a->top;
-	if (a->stack[adrs] > b->max )
+	if (a->stack[adrs] > b->max || a->stack[adrs] < b->min)
 		moves.badd = b->min_add;
 	else
 		moves.badd = clo_val_up(a, b, a->top);
