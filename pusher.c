@@ -81,10 +81,10 @@ int	clo_val_down(t_stack *a, t_stack *b, int a_add)
 	int j;
 	int	k;
 
-	i = b->top;
 	j = 1;
 	while (((a->stack[a_add] - j) > a->min || (a->stack[a_add] - j) > b->min))
 	{
+		i = b->top;
 		k = b->count;
 		while (k)
 		{
@@ -102,9 +102,34 @@ int m_plus(int min_m, int b_adrs, t_stack *b)
 {
 	int	a_amount;
 	int b_amount;
-	int	tot_amount;
 
 	a_amount = min_m;
 	b_amount = rtt(b_adrs, b);
-	return (absolute((a_amount - b_amount)));
+	return (calc(a_amount, b_amount));
+}
+
+int	calc(int am1, int am2)
+{
+	int	i;
+
+	i = 0;
+	if (am1 * am2)
+	{
+		while (am1 && am2)
+		{
+			if (am1 > 0)
+			{
+				am1--;
+				am2--;
+				i++;
+			}
+			else if (am1 < 0)
+			{
+				am1++;
+				am2++;
+				i++;
+			}
+		}
+	}
+	return (i + absolute(am1) + absolute(am2));
 }

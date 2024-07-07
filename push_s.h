@@ -68,5 +68,6 @@ void		pusher(t_stack *a, t_stack *b);
 void		b_pusher(t_stack *a, t_stack *b);
 long int	big_atoi(const char *str);
 int			is_too_much(char **arv);
+int			calc(int am1, int am2);
 
 #endif

@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 	if (!a || !b)
 		return (-1);
 	astack_filler(a, argv, argc - 1);
+	stack_display(a);
 	if (argc == 3 && (atoi(argv[1]) > atoi(argv[2])))
 		swap(a);
 	if (argc == 4)

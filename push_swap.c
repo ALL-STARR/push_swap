@@ -18,11 +18,11 @@ void	push_swap(t_stack *a, t_stack *b)
 	while(a->count > 3)
 		pusher(a, b);
 	easy_sort(a);
+	rotator(b, rtt(b->max_add,b));
 	while(b->count > 0)
 		b_pusher(b, a);
 	min_max(a);
 	rotator(a, rtt(a->min_add, a));
-	
 	return ;
 }
 

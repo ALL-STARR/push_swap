@@ -37,51 +37,15 @@ int	clo_val_up(t_stack *a, t_stack *b, int a_add)
 		return (b->top);
 }
 
-t_moves	b_find_cheap(t_stack *a, t_stack *b)
-{
-	int	min;
-	int	count;
-	int adrs;
-	t_moves	moves;
-
-	min = a->count;
-	count = min;
-	adrs = a->top;
-	moves.aadd = a->top;
-	if (a->stack[adrs] > b->max || a->stack[adrs] < b->min)
-		moves.badd = b->min_add;
-	else
-		moves.badd = clo_val_up(a, b, a->top);
-	while (count)
-	{
-		if (a->stack[adrs] > b->max || a->stack[adrs] < b->min)
-		{
-			if (min > m_plus(rtt(adrs, a), b->min_add, b))
-			{
-				min = m_plus(rtt(adrs, a), b->min_add, b);
-				moves.aadd = adrs;
-				moves.badd = b->min_add;
-			}
-		}
-		else if (min > m_plus(rtt(adrs, a), clo_val_up(a, b, adrs), b))
-		{
-			min = m_plus(rtt(adrs, a), clo_val_up(a, b, adrs), b);
-			moves.aadd = adrs;
-			moves.badd = clo_val_up(a, b, adrs);
-		}	
-		adrs = next_down(a, adrs);
-		count--;
-	}
-	return (moves);
-}
 
 void	b_pusher(t_stack *a, t_stack *b)
 {
-	t_moves	m;
 	min_max(a);
 	min_max(b);
-	m = b_find_cheap(a, b);
-	doubler(a, b, rtt(m.aadd, a), rtt(m.badd, b));
+	if (a->stack[b->top] + 1 != b->stack[b->top])
+		rotator(b, rtt(clo_val_up(a, b, a->top), b));
 	push(a, b);
+	stack_display(a);
+	stack_display(b);
 	return ;
 }
