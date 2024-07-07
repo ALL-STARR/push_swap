@@ -14,39 +14,45 @@
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-	push(a,b);
-	while(a->count > 3)
+	push(a, b);
+	while (a->count > 3)
+	{
+		if (is_in_order(a))
+			break ;
 		pusher(a, b);
-	easy_sort(a);
-	while(b->count > 0)
-		b_pusher(b, a);
+	}
+	if (a->count == 3)
+		easy_sort(a);
+	stack_display(a);	
+	stack_display(b);
+	/*while (b->count > 0)
+		b_pusher(b, a);*/
 	min_max(a);
 	rotator(a, rtt(a->min_add, a));
-	
 	return ;
 }
 
 void	easy_sort(t_stack *s)
 {
-	if (s->stack[s->top] > s->stack[next_down(s, s->top)]
-		&& s->stack[next_down(s, s->top)] > s->stack[next_down(s, next_down(s, s->top))])
+	if (s->stack[s->top] > s->stack[n_d(s, s->top)]
+		&& s->stack[n_d(s, s->top)] > s->stack[n_d(s, n_d(s, s->top))])
 	{
 		r_rotate(s, 1);
 		swap(s);
 	}
-	else if (s->stack[s->top] > s->stack[next_down(s, s->top)]
-		&& s->stack[next_down(s, s->top)] < s->stack[next_down(s, next_down(s, s->top))]
-		&& s->stack[next_down(s, next_down(s, s->top))] < s->stack[s->top])
+	else if (s->stack[s->top] > s->stack[n_d(s, s->top)]
+		&& s->stack[n_d(s, s->top)] < s->stack[n_d(s, n_d(s, s->top))]
+		&& s->stack[n_d(s, n_d(s, s->top))] < s->stack[s->top])
 		r_rotate(s, 1);
-	else if (s->stack[s->top] > s->stack[next_down(s, s->top)]
-		&& s->stack[next_down(s, s->top)] < s->stack[next_down(s, next_down(s, s->top))]
-		&& s->stack[next_down(s, next_down(s, s->top))] > s->stack[s->top])
+	else if (s->stack[s->top] > s->stack[n_d(s, s->top)]
+		&& s->stack[n_d(s, s->top)] < s->stack[n_d(s, n_d(s, s->top))]
+		&& s->stack[n_d(s, n_d(s, s->top))] > s->stack[s->top])
 		swap(s);
-	else if (s->stack[s->top] < s->stack[next_down(s, s->top)]
-		&& s->stack[s->top] > s->stack[next_down(s, next_down(s, s->top))])
+	else if (s->stack[s->top] < s->stack[n_d(s, s->top)]
+		&& s->stack[s->top] > s->stack[n_d(s, n_d(s, s->top))])
 		rotate(s, 1);
-	else if (s->stack[s->top] < s->stack[next_down(s, s->top)]
-		&& s->stack[next_down(s, next_down(s, s->top))] < s->stack[next_down(s, s->top)])
+	else if (s->stack[s->top] < s->stack[n_d(s, s->top)]
+		&& s->stack[n_d(s, n_d(s, s->top))] < s->stack[n_d(s, s->top)])
 	{
 		swap(s);
 		r_rotate(s, 1);
@@ -56,21 +62,20 @@ void	easy_sort(t_stack *s)
 
 int	next_up(t_stack *s, int add)
 {
-	if(s->count == 0)
+	if (s->count == 0)
 		return (0);
-	if(add == 0)
+	if (add == 0)
 		return (s->size - 1);
 	else
 		return (add - 1);
 }
 
-int	next_down(t_stack *s, int add)
+int	n_d(t_stack *s, int add)
 {
-	if(s->count == 0)
+	if (s->count == 0)
 		return (add);
-	if(add == s->size - 1)
+	if (add == s->size - 1)
 		return (0);
 	else
 		return (add + 1);
 }
-

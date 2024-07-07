@@ -15,14 +15,14 @@
 int	push(t_stack *src, t_stack *dst)
 {
 	int	dest;
-	
+
 	dest = next_up(dst, dst->top);
 	dst->stack[next_up(dst, dst->top)] = src->stack[src->top];
 	dst->top = dest;
 	dst->count++;
 	src->stack[src->top] = 0;
 	src->count--;
-	src->top = next_down(src, src->top);
+	src->top = n_d(src, src->top);
 	ft_printf("p%c\n", dst->name);
 	return (1);
 }
@@ -32,8 +32,8 @@ int	swap(t_stack *stk)
 	int	buf;
 
 	buf = stk->stack[stk->top];
-	stk->stack[stk->top] = stk->stack[next_down(stk, stk->top)];
-	stk->stack[next_down(stk, stk->top)] = buf;
+	stk->stack[stk->top] = stk->stack[n_d(stk, stk->top)];
+	stk->stack[n_d(stk, stk->top)] = buf;
 	ft_printf("s%c\n", stk->name);
 	return (1);
 }
@@ -43,14 +43,14 @@ void	r_rotate(t_stack *stk, int print)
 	if (stk->count == stk->size)
 	{
 		stk->bot = stk->top;
-		stk->top = next_down(stk, stk->top);
+		stk->top = n_d(stk, stk->top);
 	}
 	else
 	{
-		stk->bot = next_down(stk, stk->bot);
+		stk->bot = n_d(stk, stk->bot);
 		stk->stack[stk->bot] = stk->stack[stk->top];
 		stk->stack[stk->top] = 0;
-		stk->top = next_down(stk, stk->top);
+		stk->top = n_d(stk, stk->top);
 	}
 	if (print)
 		ft_printf("r%c\n", stk->name);

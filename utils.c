@@ -31,7 +31,7 @@ void	stack_display(t_stack *s)
 	while (count)
 	{
 		ft_printf(" %d", s->stack[adrs]);
-		adrs = next_down(s, adrs);
+		adrs = n_d(s, adrs);
 		count--;
 	}
 	ft_printf("\n");
@@ -45,7 +45,7 @@ void	true_display(t_stack *s)
 	i = 0;
 	count = s->size;
 	ft_printf("true %c : ", s->name);
-	while(count)
+	while (count)
 	{
 		ft_printf("%d ", s->stack[i]);
 		i++;

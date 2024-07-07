@@ -23,18 +23,18 @@ int	rtt(int addrs, t_stack *stak)
 	ref = addrs;
 	while (stak->stack[addrs] != stak->stack[stak->top])
 	{
-		addrs = next_down(stak, addrs);
-		if (stak->stack[addrs] != 0)
+		addrs = n_d(stak, addrs);
+		// if (stak->stack[addrs] != 0)
 			i++;
 	}
 	addrs = ref;
 	while (stak->stack[addrs] != stak->stack[stak->top])
 	{
 		addrs = next_up(stak, addrs);
-		if (stak->stack[addrs] != 0)
+		// if (stak->stack[addrs] != 0)
 			j++;
 	}
-	if (i <= j)
+	if (i >= j)
 		return (i);
 	else
 		return (-j);
@@ -42,16 +42,14 @@ int	rtt(int addrs, t_stack *stak)
 
 t_moves	f_find_cheap(t_stack *a, t_stack *b)
 {
-	int	min;
-	int	count;
-	int adrs;
+	int		min;
+	int		count;
+	int		adrs;
 	t_moves	moves;
 
-	min = a->count;
+	min = 2000;
 	count = min;
 	adrs = a->top;
-	moves.aadd = a->top;
-	moves.badd = clo_val_down(a, b, a->top);
 	while (count)
 	{
 		if (a->stack[adrs] > b->max || a->stack[adrs] < b->min)
@@ -68,8 +66,8 @@ t_moves	f_find_cheap(t_stack *a, t_stack *b)
 			min = m_plus(rtt(adrs, a), clo_val_down(a, b, adrs), b);
 			moves.aadd = adrs;
 			moves.badd = clo_val_down(a, b, adrs);
-		}	
-		adrs = next_down(a, adrs);
+		}
+		adrs = n_d(a, adrs);
 		count--;
 	}
 	return (moves);
@@ -78,7 +76,7 @@ t_moves	f_find_cheap(t_stack *a, t_stack *b)
 int	clo_val_down(t_stack *a, t_stack *b, int a_add)
 {
 	int	i;
-	int j;
+	int	j;
 	int	k;
 
 	i = b->top;
@@ -88,23 +86,65 @@ int	clo_val_down(t_stack *a, t_stack *b, int a_add)
 		k = b->count;
 		while (k)
 		{
-			if(b->stack[i] == a->stack[a_add] - j)
+			if (b->stack[i] == a->stack[a_add] - j)
 				return (i);
-			i = next_down(b, i);
+			i = n_d(b, i);
 			k--;
 		}
 		j++;
 	}
-		return (b->top);
+	return (b->top);
 }
 
-int m_plus(int min_m, int b_adrs, t_stack *b)
+int	m_plus(int min_m, int b_adrs, t_stack *b)
 {
 	int	a_amount;
-	int b_amount;
-	int	tot_amount;
+	int	b_amount;
 
 	a_amount = min_m;
 	b_amount = rtt(b_adrs, b);
-	return (absolute((a_amount - b_amount)));
+	return (calc(a_amount, b_amount));
+}
+
+int	is_in_order(t_stack *a)
+{
+	int	count;
+	int	adrs;
+
+	count = a->count;
+	adrs = a->top;
+	while (count)
+	{
+		if (a->stack[adrs] > a->stack[n_d(a, adrs)])
+			return (0);
+		adrs = n_d(a, adrs);
+		count--;
+	}
+	return (1);
+}
+
+int	calc(int am1, int am2)
+{
+	int	i;
+
+	i = 0;
+	if (am1 * am2)
+	{
+		while (am1 && am2)
+		{
+			if (am1 > 0)
+			{
+				am1--;
+				am2--;
+				i++;
+			}
+			else if (am1 < 0)
+			{
+				am1++;
+				am2++;
+				i++;
+			}
+		}
+	}
+	return (i + absolute(am1) + absolute(am2));
 }

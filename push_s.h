@@ -52,7 +52,7 @@ void		min_max(t_stack *st);
 int			absolute(int num);
 void		push_swap(t_stack *a, t_stack *b);
 int			next_up(t_stack *s, int add);
-int			next_down(t_stack *s, int add);
+int			n_d(t_stack *s, int add);
 void		ranker(int *list, t_stack *a, int size);
 int			rtt(int addrs, t_stack *stak);
 void		rotator(t_stack *stc, int amount);
@@ -68,5 +68,7 @@ void		pusher(t_stack *a, t_stack *b);
 void		b_pusher(t_stack *a, t_stack *b);
 long int	big_atoi(const char *str);
 int			is_too_much(char **arv);
+int			is_in_order(t_stack *a);
+int			calc(int am1, int am2);
 
 #endif

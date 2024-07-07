@@ -67,7 +67,7 @@ t_stack	*stack_init(int count, char nam)
 	s->stack = malloc(sizeof(int) * (count + 1));
 	if (!s->stack)
 		return (NULL);
-	while(count)
+	while (count)
 	{
 		s->stack[count - 1] = 0;
 		count--;

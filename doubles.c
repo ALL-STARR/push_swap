@@ -39,7 +39,7 @@ void	rotator(t_stack *stc, int amount)
 	}
 	while (amount < 0)
 	{
-		r_rotate(stc,1);
+		r_rotate(stc, 1);
 		amount++;
 	}
 }
