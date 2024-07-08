@@ -53,3 +53,29 @@ void	true_display(t_stack *s)
 	}
 	ft_printf("\n");
 }
+
+int	is_in_order(t_stack *s)
+{
+	int	adrs;
+	int	count;
+
+	adrs = s->top;
+	count = s->count;
+	while (count)
+	{
+		if (s->stack[adrs] > s->stack[next_down(s, adrs)])
+			return (0);
+		adrs = next_down(s, adrs);
+	}
+	return (1);
+}
+
+int	dtab_len(char **set)
+{
+	int	i;
+
+	i = 0;
+	while (set[i])
+		i++;
+	return (i + 1);
+}

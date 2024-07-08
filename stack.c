@@ -111,7 +111,7 @@ int	is_too_much(char **arv)
 	int			i;
 	long int	val;
 
-	i = 1;
+	i = 0;
 	while (arv[i])
 	{
 		if (big_atoi(arv[i]) > 2147483647 || big_atoi(arv[i]) < -2147483648)

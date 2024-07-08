@@ -16,29 +16,42 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	char	**set;
+	int		arcount;
+	int		flag;
 
-	if (argc == 1)
+	set = argv + 1;
+	arcount = argc;
+	flag = 0;
+	if (arcount == 1)
 		return (0);
-	if (!is_num(argv) || is_repeating(argv, argc - 1) || is_too_much(argv))
+	if (arcount == 2)
+	{
+		set = ft_split(argv[1], ' ');
+		arcount = dtab_len(set);
+		flag = 1;
+	}
+	if (!is_num(set) || is_repeating(set, arcount - 1) || is_too_much(set))
 	{
 		ft_printf("Error\n");
 		return (0);
 	}
-	a = stack_init(argc - 1, 'a');
-	b = stack_init(argc - 1, 'b');
+	a = stack_init(arcount - 1, 'a');
+	b = stack_init(arcount - 1, 'b');
 	if (!a || !b)
 		return (-1);
-	astack_filler(a, argv, argc - 1);
-	stack_display(a);
-	if (argc == 3 && (atoi(argv[1]) > atoi(argv[2])))
+	astack_filler(a, set, arcount - 1);
+	if (arcount == 3 && (atoi(set[0]) > atoi(set[1])))
 		swap(a);
-	if (argc == 4)
+	if (arcount == 4)
 		easy_sort(a);
-	if (argc > 4)
+	if (arcount > 4)
 		push_swap(a, b);
 	free(a->stack);
 	free(b->stack);
 	free(a);
 	free(b);
+	if (flag)
+		free(set);
 	return (0);
 }

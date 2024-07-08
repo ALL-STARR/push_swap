@@ -69,5 +69,7 @@ void		b_pusher(t_stack *a, t_stack *b);
 long int	big_atoi(const char *str);
 int			is_too_much(char **arv);
 int			calc(int am1, int am2);
+int			is_in_order(t_stack *s);
+int			dtab_len(char **set);
 
 #endif

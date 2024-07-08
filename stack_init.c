@@ -21,9 +21,9 @@ int	is_repeating(char **argm, int count)
 	checker = malloc(sizeof(int) * (count + 1));
 	i = 0;
 	j = 0;
-	while (argm[i + 1] != 0)
+	while (argm[i] != 0)
 	{
-		checker[i] = ft_atoi(argm[i + 1]);
+		checker[i] = ft_atoi(argm[i]);
 		while (j < i)
 		{
 			if (checker[i] == checker[j])
@@ -42,7 +42,7 @@ int	is_num(char **argm)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	j = 0;
 	while (argm[i] != 0)
 	{
@@ -84,18 +84,18 @@ void	astack_filler(t_stack *a, char **argm, int cntr)
 	int	i;
 	int	*check;
 
-	i = 1;
+	i = 0;
 	check = malloc(sizeof(int) * (cntr + 1));
 	if (!check)
 		return ;
 	while (argm[i] != 0)
 	{
-		a->stack[i - 1] = ft_atoi(argm[i]);
-		check[i - 1] = ft_atoi(argm[i]);
+		a->stack[i] = ft_atoi(argm[i]);
+		check[i] = ft_atoi(argm[i]);
 		i++;
 	}
-	a->stack[i - 1] = '\0';
-	check[i - 1] = '\0';
+	a->stack[i] = '\0';
+	check[i] = '\0';
 	ranker(check, a, cntr);
 	a->count = cntr;
 	a->bot = a->size - 1;
