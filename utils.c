@@ -31,7 +31,7 @@ void	stack_display(t_stack *s)
 	while (count)
 	{
 		ft_printf(" %d", s->stack[adrs]);
-		adrs = next_down(s, adrs);
+		adrs = n_d(s, adrs);
 		count--;
 	}
 	ft_printf("\n");
@@ -45,7 +45,7 @@ void	true_display(t_stack *s)
 	i = 0;
 	count = s->size;
 	ft_printf("true %c : ", s->name);
-	while(count)
+	while (count)
 	{
 		ft_printf("%d ", s->stack[i]);
 		i++;
@@ -63,9 +63,9 @@ int	is_in_order(t_stack *s)
 	count = s->count;
 	while (count)
 	{
-		if (s->stack[adrs] > s->stack[next_down(s, adrs)])
+		if (s->stack[adrs] > s->stack[n_d(s, adrs)])
 			return (0);
-		adrs = next_down(s, adrs);
+		adrs = n_d(s, adrs);
 	}
 	return (1);
 }

@@ -23,7 +23,7 @@ int	rtt(int addrs, t_stack *stak)
 	ref = addrs;
 	while (stak->stack[addrs] != stak->stack[stak->top])
 	{
-		addrs = next_down(stak, addrs);
+		addrs = n_d(stak, addrs);
 		if (stak->stack[addrs] != 0)
 			i++;
 	}
@@ -42,9 +42,9 @@ int	rtt(int addrs, t_stack *stak)
 
 t_moves	f_find_cheap(t_stack *a, t_stack *b)
 {
-	int	min;
-	int	count;
-	int adrs;
+	int		min;
+	int		count;
+	int		adrs;
 	t_moves	moves;
 
 	min = a->count;
@@ -68,8 +68,8 @@ t_moves	f_find_cheap(t_stack *a, t_stack *b)
 			min = m_plus(rtt(adrs, a), clo_val_down(a, b, adrs), b);
 			moves.aadd = adrs;
 			moves.badd = clo_val_down(a, b, adrs);
-		}	
-		adrs = next_down(a, adrs);
+		}
+		adrs = n_d(a, adrs);
 		count--;
 	}
 	return (moves);
@@ -78,7 +78,7 @@ t_moves	f_find_cheap(t_stack *a, t_stack *b)
 int	clo_val_down(t_stack *a, t_stack *b, int a_add)
 {
 	int	i;
-	int j;
+	int	j;
 	int	k;
 
 	j = 1;
@@ -88,20 +88,20 @@ int	clo_val_down(t_stack *a, t_stack *b, int a_add)
 		k = b->count;
 		while (k)
 		{
-			if(b->stack[i] == a->stack[a_add] - j)
+			if (b->stack[i] == a->stack[a_add] - j)
 				return (i);
-			i = next_down(b, i);
+			i = n_d(b, i);
 			k--;
 		}
 		j++;
 	}
-		return (b->top);
+	return (b->top);
 }
 
-int m_plus(int min_m, int b_adrs, t_stack *b)
+int	m_plus(int min_m, int b_adrs, t_stack *b)
 {
 	int	a_amount;
-	int b_amount;
+	int	b_amount;
 
 	a_amount = min_m;
 	b_amount = rtt(b_adrs, b);

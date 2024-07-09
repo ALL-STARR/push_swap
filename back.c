@@ -15,17 +15,18 @@
 int	clo_val_up(t_stack *a, t_stack *b, int a_add)
 {
 	int	i;
-	int j;
+	int	j;
 	int	k;
 
 	j = 1;
-	while ((((a->stack[a_add] + j) <= a->max ) || ((a->stack[a_add] + j) <= b->max)))
+	while ((((a->stack[a_add] + j) <= a->max)
+			|| ((a->stack[a_add] + j) <= b->max)))
 	{
 		i = b->top;
 		k = b->count;
 		while (k)
 		{
-			if(b->stack[i] == a->stack[a_add] + j)
+			if (b->stack[i] == a->stack[a_add] + j)
 			{
 				return (i);
 			}
@@ -34,9 +35,8 @@ int	clo_val_up(t_stack *a, t_stack *b, int a_add)
 		}
 		j++;
 	}
-		return (b->top);
+	return (b->top);
 }
-
 
 void	b_pusher(t_stack *a, t_stack *b)
 {

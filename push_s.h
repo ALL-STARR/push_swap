@@ -52,7 +52,7 @@ void		min_max(t_stack *st);
 int			absolute(int num);
 void		push_swap(t_stack *a, t_stack *b);
 int			next_up(t_stack *s, int add);
-int			next_down(t_stack *s, int add);
+int			n_d(t_stack *s, int add);
 void		ranker(int *list, t_stack *a, int size);
 int			rtt(int addrs, t_stack *stak);
 void		rotator(t_stack *stc, int amount);

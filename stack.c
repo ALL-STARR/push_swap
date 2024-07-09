@@ -22,7 +22,7 @@ void	min_max(t_stack *st)
 	int	add;
 	int	min;
 	int	max;
-	int maxadd;
+	int	maxadd;
 	int	minadd;
 	int	count;
 
@@ -34,12 +34,12 @@ void	min_max(t_stack *st)
 	max = min;
 	while (count)
 	{
-		if(st->stack[add] < min)
+		if (st->stack[add] < min)
 		{
 			min = st->stack[add];
 			minadd = add;
 		}
-		if(st->stack[add] > max)
+		if (st->stack[add] > max)
 		{
 			max = st->stack[add];
 			maxadd = add;
@@ -57,7 +57,7 @@ void	min_max(t_stack *st)
 void	pusher(t_stack *a, t_stack *b)
 {
 	t_moves	m;
-	
+
 	min_max(a);
 	min_max(b);
 	m = f_find_cheap(a, b);
