@@ -71,5 +71,9 @@ int			is_too_much(char **arv);
 int			calc(int am1, int am2);
 int			is_in_order(t_stack *s);
 int			dtab_len(char **set);
+int			is_invalid(char **set, int arcount);
+int			initiator(t_stack *a, t_stack *b, int arcount, char **set);
+void		freeer(t_stack *a, t_stack *b, int fl, char **set);
+char		**ft_reader(char **set, char **argv, int *arcount, int *flag);
 
 #endif

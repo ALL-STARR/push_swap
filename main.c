@@ -26,32 +26,56 @@ int	main(int argc, char **argv)
 	if (arcount == 1)
 		return (0);
 	if (arcount == 2)
-	{
-		set = ft_split(argv[1], ' ');
-		arcount = dtab_len(set);
-		flag = 1;
-	}
-	if (!is_num(set) || is_repeating(set, arcount - 1) || is_too_much(set))
-	{
-		ft_printf("Error\n");
+		set = ft_reader(set, argv, &arcount, &flag);
+	if (is_invalid(set, arcount))
 		return (0);
-	}
-	a = stack_init(arcount - 1, 'a');
-	b = stack_init(arcount - 1, 'b');
-	if (!a || !b)
+	if (initiator(a, b, arcount, set) == -1)
 		return (-1);
-	astack_filler(a, set, arcount - 1);
 	if (arcount == 3 && (atoi(set[0]) > atoi(set[1])))
 		swap(a);
 	if (arcount == 4)
 		easy_sort(a);
 	if (arcount > 4)
 		push_swap(a, b);
+	freeer(a, b, flag, set);
+	return (0);
+}
+
+int	is_invalid(char **set, int arcount)
+{
+	if (!is_num(set) || is_repeating(set, arcount - 1) || is_too_much(set))
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
+	return (0);
+}
+
+int	initiator(t_stack *a, t_stack *b, int arcount, char **set)
+{
+	a = stack_init(arcount - 1, 'a');
+	b = stack_init(arcount - 1, 'b');
+	if (!a || !b)
+		return (-1);
+	astack_filler(a, set, arcount - 1);
+}
+
+void	freeer(t_stack *a, t_stack *b, int fl, char **set)
+{
 	free(a->stack);
 	free(b->stack);
 	free(a);
 	free(b);
-	if (flag)
+	if (fl)
 		free(set);
-	return (0);
+}
+
+char	**ft_reader(char **set, char **argv, int *arcount, int *flag)
+{
+	set = ft_split(argv[1], ' ');
+		if (!set)
+			return (NULL);
+		*arcount = dtab_len(set);
+		*flag = 1;
+		return (set);
 }

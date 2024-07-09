@@ -30,7 +30,7 @@ int	clo_val_up(t_stack *a, t_stack *b, int a_add)
 			{
 				return (i);
 			}
-			i = next_down(b, i);
+			i = n_d(b, i);
 			k--;
 		}
 		j++;

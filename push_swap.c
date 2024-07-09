@@ -16,8 +16,13 @@ void	push_swap(t_stack *a, t_stack *b)
 {
 	push(a, b);
 	while (a->count > 3)
+	{
+		if (is_in_order(a))
+			break ;
 		pusher(a, b);
-	easy_sort(a);
+	}
+	if (a->count == 3)
+		easy_sort(a);
 	rotator(b, rtt(b->max_add, b));
 	while (b->count > 0)
 		b_pusher(b, a);

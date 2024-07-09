@@ -44,7 +44,7 @@ void	min_max(t_stack *st)
 			max = st->stack[add];
 			maxadd = add;
 		}
-		add = next_down(st, add);
+		add = n_d(st, add);
 		count--;
 	}
 	st->max = max;
