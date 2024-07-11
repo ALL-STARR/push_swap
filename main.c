@@ -29,14 +29,9 @@ int	main(int argc, char **argv)
 		set = ft_reader(set, argv, &arcount, &flag);
 	if (is_invalid(set, arcount))
 		return (0);
-	if (initiator(a, b, arcount, set) == -1)
+	if (initiator(&a, &b, arcount, set))
 		return (-1);
-	if (arcount == 3 && (atoi(set[0]) > atoi(set[1])))
-		swap(a);
-	if (arcount == 4)
-		easy_sort(a);
-	if (arcount > 4)
-		push_swap(a, b);
+	dispatcher(a, b, arcount, set);
 	freeer(a, b, flag, set);
 	return (0);
 }
@@ -51,13 +46,14 @@ int	is_invalid(char **set, int arcount)
 	return (0);
 }
 
-int	initiator(t_stack *a, t_stack *b, int arcount, char **set)
+int	initiator(t_stack **a, t_stack **b, int arcount, char **set)
 {
-	a = stack_init(arcount - 1, 'a');
-	b = stack_init(arcount - 1, 'b');
+	*a = stack_init(arcount - 1, 'a');
+	*b = stack_init(arcount - 1, 'b');
 	if (!a || !b)
-		return (-1);
-	astack_filler(a, set, arcount - 1);
+		return (1);
+	astack_filler(*a, set, arcount - 1);
+	return (0);
 }
 
 void	freeer(t_stack *a, t_stack *b, int fl, char **set)
@@ -73,9 +69,9 @@ void	freeer(t_stack *a, t_stack *b, int fl, char **set)
 char	**ft_reader(char **set, char **argv, int *arcount, int *flag)
 {
 	set = ft_split(argv[1], ' ');
-		if (!set)
-			return (NULL);
-		*arcount = dtab_len(set);
-		*flag = 1;
-		return (set);
+	if (!set)
+		return (NULL);
+	*arcount = dtab_len(set);
+	*flag = 1;
+	return (set);
 }

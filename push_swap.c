@@ -23,6 +23,7 @@ void	push_swap(t_stack *a, t_stack *b)
 	}
 	if (a->count == 3)
 		easy_sort(a);
+	min_max(b);
 	rotator(b, rtt(b->max_add, b));
 	while (b->count > 0)
 		b_pusher(b, a);
@@ -77,4 +78,14 @@ int	n_d(t_stack *s, int add)
 		return (0);
 	else
 		return (add + 1);
+}
+
+void	dispatcher(t_stack *a, t_stack *b, int arcount, char **set)
+{
+	if (arcount == 3 && (atoi(set[0]) > atoi(set[1])))
+		swap(a);
+	if (arcount == 4)
+		easy_sort(a);
+	if (arcount > 4)
+		push_swap(a, b);
 }

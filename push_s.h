@@ -40,7 +40,6 @@ int			is_repeating(char **argm, int count);
 int			is_num(char **argm);
 t_stack		*stack_init(int count, char nam);
 void		astack_filler(t_stack *A, char **argm, int cntr);
-int			is_empty(t_stack *st);
 int			swap(t_stack *stk);
 int			push(t_stack *src, t_stack *dst);
 void		rotate(t_stack *st, int print);
@@ -61,7 +60,6 @@ int			m_plus(int min_m, int b_adrs, t_stack *b);
 int			clo_val_down(t_stack *a, t_stack *b, int a_add);
 int			clo_val_up(t_stack *a, t_stack *b, int a_add);
 t_moves		f_find_cheap(t_stack *a, t_stack *b);
-t_moves		b_find_cheap(t_stack *a, t_stack *b);
 void		true_display(t_stack *s);
 void		doubler(t_stack *a, t_stack *b, int am1, int am2);
 void		pusher(t_stack *a, t_stack *b);
@@ -72,8 +70,10 @@ int			calc(int am1, int am2);
 int			is_in_order(t_stack *s);
 int			dtab_len(char **set);
 int			is_invalid(char **set, int arcount);
-int			initiator(t_stack *a, t_stack *b, int arcount, char **set);
+int			initiator(t_stack **a, t_stack **b, int arcount, char **set);
 void		freeer(t_stack *a, t_stack *b, int fl, char **set);
 char		**ft_reader(char **set, char **argv, int *arcount, int *flag);
+void		dispatcher(t_stack *a, t_stack *b, int arcount, char **set);
+t_moves		finder(t_moves *moves, t_stack *a, t_stack *b, t_moves val);
 
 #endif

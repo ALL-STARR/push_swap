@@ -73,3 +73,31 @@ void	rotate(t_stack *stk, int print)
 	if (print)
 		ft_printf("rr%c\n", stk->name);
 }
+
+t_moves	finder(t_moves *moves, t_stack *a, t_stack *b, t_moves val)
+{
+	int	min;
+
+	min = val.aadd;
+	while (val.aadd)
+	{
+		if (a->stack[val.badd] > b->max || a->stack[val.badd] < b->min)
+		{
+			if (min > m_plus(rtt(val.badd, a), b->max_add, b))
+			{
+				min = m_plus(rtt(val.badd, a), b->max_add, b);
+				moves->aadd = val.badd;
+				moves->badd = b->max_add;
+			}
+		}
+		if (min > m_plus(rtt(val.badd, a), clo_val_down(a, b, val.badd), b))
+		{
+			min = m_plus(rtt(val.badd, a), clo_val_down(a, b, val.badd), b);
+			moves->aadd = val.badd;
+			moves->badd = clo_val_down(a, b, val.badd);
+		}
+		val.badd = n_d(a, val.badd);
+		val.aadd--;
+	}
+	return (*moves);
+}

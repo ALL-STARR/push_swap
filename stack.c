@@ -12,45 +12,31 @@
 
 #include "push_s.h"
 
-int	is_empty(t_stack *st)
-{
-	return (st->count == 0);
-}
-
 void	min_max(t_stack *st)
 {
-	int	add;
-	int	min;
-	int	max;
-	int	maxadd;
-	int	minadd;
-	int	count;
+	int		add;
+	int		count;
 
 	count = st->count;
-	maxadd = st->top;
-	add = maxadd;
-	minadd = maxadd;
-	min = st->stack[st->top];
-	max = min;
+	add = st->top;
+	st->min = st->stack[add];
+	st->min_add = add;
+	st->max = 0;
 	while (count)
 	{
-		if (st->stack[add] < min)
+		if (st->stack[add] < st->min)
 		{
-			min = st->stack[add];
-			minadd = add;
+			st->min = st->stack[add];
+			st->min_add = add;
 		}
-		if (st->stack[add] > max)
+		if (st->stack[add] > st->max)
 		{
-			max = st->stack[add];
-			maxadd = add;
+			st->max = st->stack[add];
+			st->max_add = add;
 		}
 		add = n_d(st, add);
 		count--;
 	}
-	st->max = max;
-	st->min = min;
-	st->max_add = maxadd;
-	st->min_add = minadd;
 	return ;
 }
 

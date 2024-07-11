@@ -42,37 +42,14 @@ int	rtt(int addrs, t_stack *stak)
 
 t_moves	f_find_cheap(t_stack *a, t_stack *b)
 {
-	int		min;
-	int		count;
-	int		adrs;
 	t_moves	moves;
+	t_moves	val;
 
-	min = a->count;
-	count = min;
-	adrs = a->top;
+	val.aadd = a->count;
+	val.badd = a->top;
 	moves.aadd = a->top;
 	moves.badd = clo_val_down(a, b, a->top);
-	while (count)
-	{
-		if (a->stack[adrs] > b->max || a->stack[adrs] < b->min)
-		{
-			if (min > m_plus(rtt(adrs, a), b->max_add, b))
-			{
-				min = m_plus(rtt(adrs, a), b->max_add, b);
-				moves.aadd = adrs;
-				moves.badd = b->max_add;
-			}
-		}
-		else if (min > m_plus(rtt(adrs, a), clo_val_down(a, b, adrs), b))
-		{
-			min = m_plus(rtt(adrs, a), clo_val_down(a, b, adrs), b);
-			moves.aadd = adrs;
-			moves.badd = clo_val_down(a, b, adrs);
-		}
-		adrs = n_d(a, adrs);
-		count--;
-	}
-	return (moves);
+	return (finder(&moves, a, b, val));
 }
 
 int	clo_val_down(t_stack *a, t_stack *b, int a_add)
