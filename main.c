@@ -27,11 +27,14 @@ int	main(int argc, char **argv)
 		return (0);
 	if (arcount == 2)
 		set = ft_reader(set, argv, &arcount, &flag);
+	if (!set)
+		return (1);
 	if (is_invalid(set, arcount))
-		return (0);
+		return (free(set), 1);
 	if (initiator(&a, &b, arcount, set))
-		return (-1);
-	dispatcher(a, b, arcount, set);
+		return (1);
+	if (!is_in_order(a))
+		dispatcher(a, b, arcount, set);
 	freeer(a, b, flag, set);
 	return (0);
 }
@@ -49,10 +52,13 @@ int	is_invalid(char **set, int arcount)
 int	initiator(t_stack **a, t_stack **b, int arcount, char **set)
 {
 	*a = stack_init(arcount - 1, 'a');
+	if (!*a)
+		return (ft_printf("malloc error\n"), 1);
 	*b = stack_init(arcount - 1, 'b');
-	if (!a || !b)
-		return (1);
-	astack_filler(*a, set, arcount - 1);
+	if (!*b)
+		return (free(*a), ft_printf("malloc error\n"), 1);
+	if (!astack_filler(*a, set, arcount - 1))
+		return (ft_printf("malloc error\n"), 1);
 	return (0);
 }
 
@@ -69,7 +75,7 @@ void	freeer(t_stack *a, t_stack *b, int fl, char **set)
 char	**ft_reader(char **set, char **argv, int *arcount, int *flag)
 {
 	set = ft_split(argv[1], ' ');
-	if (!set)
+	if (!set || !*set || !**set)
 		return (NULL);
 	*arcount = dtab_len(set);
 	*flag = 1;

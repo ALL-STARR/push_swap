@@ -39,7 +39,7 @@ typedef struct s_moves
 int			is_repeating(char **argm, int count);
 int			is_num(char **argm);
 t_stack		*stack_init(int count, char nam);
-void		astack_filler(t_stack *A, char **argm, int cntr);
+int			astack_filler(t_stack *A, char **argm, int cntr);
 int			swap(t_stack *stk);
 int			push(t_stack *src, t_stack *dst);
 void		rotate(t_stack *st, int print);

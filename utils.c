@@ -61,11 +61,12 @@ int	is_in_order(t_stack *s)
 
 	adrs = s->top;
 	count = s->count;
-	while (count)
+	while (count - 1)
 	{
-		if (s->stack[adrs] > s->stack[n_d(s, adrs)])
+		if ((s->stack[adrs] > s->stack[n_d(s, adrs)]))
 			return (0);
 		adrs = n_d(s, adrs);
+		count--;
 	}
 	return (1);
 }

@@ -100,6 +100,8 @@ int	is_too_much(char **arv)
 	i = 0;
 	while (arv[i])
 	{
+		if (ft_strlen(arv[i]) > 11)
+			return (1);
 		if (big_atoi(arv[i]) > 2147483647 || big_atoi(arv[i]) < -2147483648)
 			return (1);
 		i++;

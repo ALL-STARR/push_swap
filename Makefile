@@ -1,5 +1,5 @@
 # -----------------------------------Makefile------------------------------------
-NAME	= push_swap.a
+NAME	= push_swap
 
 # -----------------------------------Sources-------------------------------------
 
@@ -32,7 +32,7 @@ FT_FOLDER = ./libft
 
 FT = ${FT_FOLDER}/libft.a
 
-CC		= gcc -fsanitize=address -g
+CC		= gcc #-fsanitize=address -g
 
 FLAGS	= -Wall -Wextra -Werror
 
@@ -51,7 +51,7 @@ INCLUDES = -I ./includes
 all: ${NAME}
 
 ${NAME}: ${FT} ${OBJS}
-		${LIB} ${NAME} ${OBJS}
+		${CC} ${FLAGS} -o ${NAME} ${OBJS} ${FT}
 
 ${FT}: 
 		${MAKE_FT}

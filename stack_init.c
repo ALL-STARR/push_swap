@@ -43,14 +43,14 @@ int	is_num(char **argm)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (argm[i] != 0)
 	{
+		j = 0;
 		if (argm[i][j] == '-')
 			j++;
-		if (!(ft_isdigit(argm[i][j])))
-			return (0);
-		j = 0;
+		while (argm[i][j])
+			if (!(ft_isdigit(argm[i][j++])))
+				return (0);
 		i++;
 	}
 	return (1);
@@ -79,7 +79,7 @@ t_stack	*stack_init(int count, char nam)
 	return (s);
 }
 
-void	astack_filler(t_stack *a, char **argm, int cntr)
+int	astack_filler(t_stack *a, char **argm, int cntr)
 {
 	int	i;
 	int	*check;
@@ -87,7 +87,7 @@ void	astack_filler(t_stack *a, char **argm, int cntr)
 	i = 0;
 	check = malloc(sizeof(int) * (cntr + 1));
 	if (!check)
-		return ;
+		return (0);
 	while (argm[i] != 0)
 	{
 		a->stack[i] = ft_atoi(argm[i]);
@@ -99,7 +99,7 @@ void	astack_filler(t_stack *a, char **argm, int cntr)
 	ranker(check, a, cntr);
 	a->count = cntr;
 	a->bot = a->size - 1;
-	return ;
+	return (1);
 }
 
 void	ranker(int *list, t_stack *a, int size)
