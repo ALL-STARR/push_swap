@@ -27,10 +27,12 @@ int	main(int argc, char **argv)
 		return (0);
 	if (arcount == 2)
 		set = ft_reader(set, argv, &arcount, &flag);
-	if (!set)
+	if (!set || is_invalid(set, arcount))
+	{
+		if (flag)
+			return (ft_free(set), 1);
 		return (1);
-	if (is_invalid(set, arcount))
-		return (free(set), 1);
+	}
 	if (initiator(&a, &b, arcount, set))
 		return (1);
 	if (!is_in_order(a))
@@ -69,7 +71,7 @@ void	freeer(t_stack *a, t_stack *b, int fl, char **set)
 	free(a);
 	free(b);
 	if (fl)
-		free(set);
+		ft_free(set);
 }
 
 char	**ft_reader(char **set, char **argv, int *arcount, int *flag)

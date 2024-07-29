@@ -63,12 +63,12 @@ static int	spacer(char *str)
 	return (i);
 }
 
-long int	big_atoi(const char *str)
+long long	big_atoi(const char *str)
 {
-	long int	i;
-	long int	res;
-	long int	minus;
-	long int	previous;
+	long long	i;
+	long long	res;
+	long long	minus;
+	long long	previous;
 
 	res = 0;
 	minus = 1;
@@ -100,7 +100,7 @@ int	is_too_much(char **arv)
 	i = 0;
 	while (arv[i])
 	{
-		if (ft_strlen(arv[i]) > 11)
+		if (ft_strlen(arv[i]) > 12)
 			return (1);
 		if (big_atoi(arv[i]) > 2147483647 || big_atoi(arv[i]) < -2147483648)
 			return (1);

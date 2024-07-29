@@ -64,7 +64,7 @@ void		true_display(t_stack *s);
 void		doubler(t_stack *a, t_stack *b, int am1, int am2);
 void		pusher(t_stack *a, t_stack *b);
 void		b_pusher(t_stack *a, t_stack *b);
-long int	big_atoi(const char *str);
+long long	big_atoi(const char *str);
 int			is_too_much(char **arv);
 int			calc(int am1, int am2);
 int			is_in_order(t_stack *s);
@@ -75,5 +75,5 @@ void		freeer(t_stack *a, t_stack *b, int fl, char **set);
 char		**ft_reader(char **set, char **argv, int *arcount, int *flag);
 void		dispatcher(t_stack *a, t_stack *b, int arcount, char **set);
 t_moves		finder(t_moves *moves, t_stack *a, t_stack *b, t_moves val);
-
+int			ft_free(char **piec);
 #endif

@@ -27,7 +27,7 @@ int	is_repeating(char **argm, int count)
 		while (j < i)
 		{
 			if (checker[i] == checker[j])
-				return (1);
+				return (free(checker), 1);
 			j++;
 		}
 		j = 0;
@@ -46,11 +46,16 @@ int	is_num(char **argm)
 	while (argm[i] != 0)
 	{
 		j = 0;
+		if (argm[i][j] == '-' && argm[i][j + 1] == '\0')
+			return (0);
 		if (argm[i][j] == '-')
 			j++;
 		while (argm[i][j])
-			if (!(ft_isdigit(argm[i][j++])))
+		{
+			if (!(ft_isdigit(argm[i][j])))
 				return (0);
+			j++;
+		}
 		i++;
 	}
 	return (1);

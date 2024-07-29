@@ -68,3 +68,14 @@ void	doubler(t_stack *a, t_stack *b, int am1, int am2)
 	rotator(b, am2);
 	return ;
 }
+
+int	ft_free(char **piec)
+{
+	int	i;
+
+	i = -1;
+	while (piec[++i])
+		free(piec[i]);
+	free(piec);
+	return (0);
+}
